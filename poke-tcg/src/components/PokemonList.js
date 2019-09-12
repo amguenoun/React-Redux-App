@@ -21,13 +21,13 @@ const PokemonList = ({ fetchCards, changePage, pokemonCards, url, isFetching, se
     }
     return (
         <div>
-            <PokemonPages handlePageChange={handlePageChange} />
+            {!searchUrl ? <PokemonPages handlePageChange={handlePageChange} /> : null}
             {isFetching ? <Loader className='loader' type="BallTriangle" color="red" height={300} width={300} /> :
                 <div className='card-container'>
                     {pokemonCards.map(card => <Pokemon card={card} key={Math.random()} />)}
                 </div>
             }
-            <PokemonPages handlePageChange={handlePageChange} />
+            {!searchUrl ? <PokemonPages handlePageChange={handlePageChange} /> : null}
         </div>
     )
 }
