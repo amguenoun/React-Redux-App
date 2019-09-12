@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
 import PokemonList from './components/PokemonList';
@@ -23,11 +22,4 @@ function App(props) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    isFetching: state.isFetching,
-    error: state.error
-  }
-}
-
-export default connect(mapStateToProps, {})(App);
+export default App;

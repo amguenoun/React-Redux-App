@@ -11,7 +11,6 @@ const initialState = {
     pokemonCards: [0],
     error: '',
     url: 'https://api.pokemontcg.io/v1/cards',
-    pokeUrl: '',
     individualCard: {},
 }
 
@@ -42,7 +41,8 @@ export const reducer = (state = initialState, action) => {
         case FETCH_INDIVIDUAL_POKEMON:
             return {
                 ...state,
-                individualCard: action.payload
+                individualCard: action.payload,
+                isFetching: false,
             }
 
         default:

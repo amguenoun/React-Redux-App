@@ -12,7 +12,7 @@ const IndividualPokemon = (props) => {
     }, [id])
 
     return (
-        !props.card ? <Loader className='loader' type="BallTriangle" color="red" height={300} width={300} /> :
+        props.isFetching ? <Loader className='loader' type="BallTriangle" color="red" height={300} width={300} /> :
             <div className='card'>
                 <h3>{props.card.name}</h3>
                 <img alt={props.card.name} src={props.card.imageUrlHiRes} />
@@ -22,7 +22,8 @@ const IndividualPokemon = (props) => {
 
 const mapStateToProps = state => {
     return {
-        card: state.individualCard
+        card: state.individualCard,
+        isFetching: state.isFetching,
     }
 }
 
