@@ -4,6 +4,7 @@ import {
     FETCHING_FAIL,
     CHANGE_PAGE,
     FETCH_INDIVIDUAL_POKEMON,
+    SET_SEARCH,
 } from '../actions'
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
     pokemonCards: [0],
     error: '',
     url: 'https://api.pokemontcg.io/v1/cards',
+    searchUrl: null,
     individualCard: {},
 }
 
@@ -37,14 +39,18 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 url: `https://api.pokemontcg.io/v1/cards?page=${action.payload}`
-            }
+            };
         case FETCH_INDIVIDUAL_POKEMON:
             return {
                 ...state,
                 individualCard: action.payload,
                 isFetching: false,
+            };
+        case SET_SEARCH:
+            return {
+                ...state,
+                searchUrl: action.payload
             }
-
         default:
             return state;
     }

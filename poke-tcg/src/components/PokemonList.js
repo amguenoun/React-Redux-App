@@ -6,10 +6,15 @@ import Loader from 'react-loader-spinner'
 import PokemonPages from './Pagination';
 import Pokemon from './Pokemon';
 
-const PokemonList = ({ fetchCards, changePage, pokemonCards, url, isFetching }) => {
+const PokemonList = ({ fetchCards, changePage, pokemonCards, url, isFetching, searchUrl }) => {
     useEffect(() => {
-        fetchCards(url);
-    }, [fetchCards, url])
+        if (!searchUrl) {
+            fetchCards(url);
+        }
+        else {
+            fetchCards(searchUrl);
+        }
+    }, [fetchCards, url, searchUrl])
 
     const handlePageChange = (number) => {
         changePage(number);
@@ -32,6 +37,7 @@ const mapStateToProps = state => {
         pokemonCards: state.pokemonCards,
         url: state.url,
         isFetching: state.isFetching,
+        searchUrl: state.searchUrl,
     }
 }
 

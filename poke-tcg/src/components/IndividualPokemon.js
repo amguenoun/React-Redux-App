@@ -7,9 +7,10 @@ import { fetchPokemon } from '../store/actions';
 
 const IndividualPokemon = (props) => {
     const id = props.match.params.id;
+    const fetch = props.fetchPokemon;
     useEffect(() => {
-        props.fetchPokemon(`https://api.pokemontcg.io/v1/cards/${id}`);
-    }, [id])
+        fetch(`https://api.pokemontcg.io/v1/cards/${id}`);
+    }, [fetch, id])
 
     return (
         props.isFetching ? <Loader className='loader' type="BallTriangle" color="red" height={300} width={300} /> :
