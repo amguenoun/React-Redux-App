@@ -1,6 +1,6 @@
 const initialState = {
     isFetching: false,
-    pokemonCards: [],
+    pokemonCards: [0],
     error: '',
 }
 

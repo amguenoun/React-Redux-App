@@ -1,12 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import PokemonList from './components/PokemonList';
+
 import './App.css';
 
-function App() {
+function App(props) {
   return (
     <div className="App">
-      Test
+      App Here
+      <PokemonList />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isFetching: state.isFetching,
+    error: state.error
+  }
+}
+
+export default connect(mapStateToProps, {})(App);
