@@ -13,3 +13,8 @@
 .card{
   margin: 1%;
 }
+
+.loader {
+  margin: 2% auto;
+  text-align:center;
+}
