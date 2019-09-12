@@ -7,7 +7,7 @@ const initialState = {
     isFetching: false,
     pokemonCards: [0],
     error: '',
-    url: 'https://api.pokemontcg.io/v1/cards?page=0'
+    url: 'https://api.pokemontcg.io/v1/cards'
 }
 
 export const reducer = (state = initialState, action) => {

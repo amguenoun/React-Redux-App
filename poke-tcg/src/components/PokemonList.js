@@ -7,11 +7,11 @@ import Pokemon from './Pokemon';
 const PokemonList = ({ fetchCards, pokemonCards, url }) => {
     useEffect(() => {
         fetchCards(url);
-    }, [url])
+    }, [fetchCards, url])
     return (
         <div>
             <p>Pokemon List Here</p>
-            {pokemonCards.map(card => <Pokemon pokemon={card} key={Date.now()} />)}
+            {pokemonCards.map(card => <Pokemon card={card} key={Math.random()} />)}
         </div>
     )
 }
