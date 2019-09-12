@@ -10,3 +10,12 @@ export const fetchCards = (url) => dispatch => {
         .then(res => dispatch({ type: FETCHING_SUCCESS, payload: res.data.cards }))
         .catch(err => dispatch({ type: FETCHING_FAIL, payload: `Status: ${err.response.status}, ${err.response.statusText}` }))
 }
+
+export const CHANGE_PAGE = 'CHANGE_PAGE';
+
+export const changePage = (number) => {
+    return {
+        type: CHANGE_PAGE,
+        payload: number
+    }
+}

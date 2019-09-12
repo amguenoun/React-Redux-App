@@ -1,17 +1,25 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { fetchCards } from '../store/actions'
+import { fetchCards, changePage } from '../store/actions'
 
+import PokemonPages from './Pagination';
 import Pokemon from './Pokemon';
 
-const PokemonList = ({ fetchCards, pokemonCards, url }) => {
+const PokemonList = ({ fetchCards, changePage, pokemonCards, url }) => {
     useEffect(() => {
         fetchCards(url);
     }, [fetchCards, url])
+
+    const handlePageChange = (number) => {
+        changePage(number);
+    }
     return (
         <div>
-            <p>Pokemon List Here</p>
-            {pokemonCards.map(card => <Pokemon card={card} key={Math.random()} />)}
+            <PokemonPages handlePageChange={handlePageChange} />
+            <div className='card-container'>
+                {pokemonCards.map(card => <Pokemon card={card} key={Math.random()} />)}
+            </div>
+            <PokemonPages handlePageChange={handlePageChange} />
         </div>
     )
 }
@@ -23,4 +31,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { fetchCards })(PokemonList);
+export default connect(mapStateToProps, { fetchCards, changePage })(PokemonList);

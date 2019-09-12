@@ -2,7 +2,9 @@ import {
     FETCHING_START,
     FETCHING_SUCCESS,
     FETCHING_FAIL,
+    CHANGE_PAGE,
 } from '../actions'
+
 const initialState = {
     isFetching: false,
     pokemonCards: [0],
@@ -29,6 +31,11 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload,
                 isFetching: false,
             };
+        case CHANGE_PAGE:
+            return {
+                ...state,
+                url: `https://api.pokemontcg.io/v1/cards?page=${action.payload}`
+            }
         default:
             return state;
     }
