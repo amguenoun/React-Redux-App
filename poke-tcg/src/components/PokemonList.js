@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchCards } from '../store/actions'
 
 import Pokemon from './Pokemon';
 
-const PokemonList = (props) => {
+const PokemonList = ({ fetchCards, pokemonCards, url }) => {
+    useEffect(() => {
+        fetchCards(url);
+    }, [url])
     return (
         <div>
             <p>Pokemon List Here</p>
-            {props.pokemonCards.map(card => <Pokemon pokemon={card} key={Date.now()} />)}
+            {pokemonCards.map(card => <Pokemon pokemon={card} key={Date.now()} />)}
         </div>
     )
 }
