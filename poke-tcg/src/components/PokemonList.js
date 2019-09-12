@@ -6,7 +6,7 @@ import Loader from 'react-loader-spinner'
 import PokemonPages from './Pagination';
 import Pokemon from './Pokemon';
 
-const PokemonList = ({ fetchCards, changePage, pokemonCards, url }) => {
+const PokemonList = ({ fetchCards, changePage, pokemonCards, url, isFetching }) => {
     useEffect(() => {
         fetchCards(url);
     }, [fetchCards, url])
@@ -17,12 +17,11 @@ const PokemonList = ({ fetchCards, changePage, pokemonCards, url }) => {
     return (
         <div>
             <PokemonPages handlePageChange={handlePageChange} />
-            <div className='card-container'>
-                {pokemonCards.map(card => !card ?
-                    <Loader className='loader' type="BallTriangle" color="red" height={300} width={300} /> :
-                    <Pokemon card={card} key={Math.random()} />)
-                }
-            </div>
+            {isFetching ? <Loader className='loader' type="BallTriangle" color="red" height={300} width={300} /> :
+                <div className='card-container'>
+                    {pokemonCards.map(card => <Pokemon card={card} key={Math.random()} />)}
+                </div>
+            }
             <PokemonPages handlePageChange={handlePageChange} />
         </div>
     )
@@ -31,7 +30,8 @@ const PokemonList = ({ fetchCards, changePage, pokemonCards, url }) => {
 const mapStateToProps = state => {
     return {
         pokemonCards: state.pokemonCards,
-        url: state.url
+        url: state.url,
+        isFetching: state.isFetching,
     }
 }
 
