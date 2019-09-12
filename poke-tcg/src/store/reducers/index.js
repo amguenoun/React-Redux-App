@@ -3,13 +3,16 @@ import {
     FETCHING_SUCCESS,
     FETCHING_FAIL,
     CHANGE_PAGE,
+    FETCH_INDIVIDUAL_POKEMON,
 } from '../actions'
 
 const initialState = {
     isFetching: false,
     pokemonCards: [0],
     error: '',
-    url: 'https://api.pokemontcg.io/v1/cards'
+    url: 'https://api.pokemontcg.io/v1/cards',
+    pokeUrl: '',
+    individualCard: {},
 }
 
 export const reducer = (state = initialState, action) => {
@@ -36,6 +39,12 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 url: `https://api.pokemontcg.io/v1/cards?page=${action.payload}`
             }
+        case FETCH_INDIVIDUAL_POKEMON:
+            return {
+                ...state,
+                individualCard: action.payload
+            }
+
         default:
             return state;
     }

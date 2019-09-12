@@ -19,3 +19,12 @@ export const changePage = (number) => {
         payload: number
     }
 }
+
+export const FETCH_INDIVIDUAL_POKEMON = 'FETCH_INDIVIDUAL_POKEMON'
+
+export const fetchPokemon = (url) => dispatch => {
+    dispatch({ type: FETCHING_START });
+    axios.get(url)
+        .then(res => dispatch({ type: FETCH_INDIVIDUAL_POKEMON, payload: res.data.card }))
+        .catch(err => dispatch({ type: FETCHING_FAIL, payload: `Status: ${err.response.status}, ${err.response.statusText}` }))
+}
