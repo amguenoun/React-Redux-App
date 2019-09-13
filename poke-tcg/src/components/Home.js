@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
     return (
-        <div>
+        <div className='home-div'>
             <h1>Welcome to the Pokemon TCG Database</h1>
-            <Link to='/pokemon'>Get Started</Link>
+            <Link to='/pokemon' className='start-link'>Get Started</Link>
         </div>
     )
 }
