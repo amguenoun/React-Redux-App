@@ -22,7 +22,7 @@ const SearchForm = (props) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='search-form'>
                 <select name="option" onChange={handleChange}>
                     <option>Type of Search</option>
                     <option value="name">Name</option>
