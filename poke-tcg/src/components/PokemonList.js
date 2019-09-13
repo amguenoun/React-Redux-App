@@ -22,7 +22,7 @@ const PokemonList = ({ fetchCards, changePage, pokemonCards, url, isFetching }) 
                     {pokemonCards.map(card => <Pokemon card={card} key={Math.random()} />)}
                 </div>
             }
-            <PokemonPages handlePageChange={handlePageChange} />
+            <PokemonPages className='bottom-pagination' handlePageChange={handlePageChange} />
         </div>
     )
 }

@@ -5,13 +5,22 @@
 .card-container {
   display:flex;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 2% auto;
   width: 80%;
   justify-content: space-between;
+  background: rgba(41, 48, 48, 0.7);
 }
 
 .card{
   margin: 1%;
+}
+
+.card a{
+  color:white;
+}
+
+.card a:hover{
+  color:lightskyblue;
 }
 
 .loader {
@@ -87,4 +96,20 @@
   background:white;
   color:#1d1d43;
   border-radius:8px;
+}
+
+.page{
+  background:#1d1d43 !important;
+}
+
+.page a{
+  color:white !important;
+}
+
+.page .active{
+  background:rgba(255, 255, 255, 0.363) !important;
+}
+
+ .ui.pagination.page.menu:last-child{
+  margin:2%  0% !important;
 }
