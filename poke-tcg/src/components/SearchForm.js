@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { setSearch } from '../store/actions/index';
 
+import SearchList from './SearchList';
+
 const SearchForm = (props) => {
     const [option, setOption] = useState("");
     const [input, setInput] = useState("");
@@ -10,7 +12,6 @@ const SearchForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         props.setSearch(`https://api.pokemontcg.io/v1/cards?${option}=${input}`);
-        props.history.push('/pokemon');
     }
 
     const handleChange = (e) => {
@@ -32,6 +33,7 @@ const SearchForm = (props) => {
                 <input name='input' placeholder='Search' onChange={handleChange} />
                 <button type='submit'>Submit</button>
             </form>
+            <SearchList />
         </div>
     )
 }

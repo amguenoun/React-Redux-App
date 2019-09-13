@@ -37,3 +37,12 @@ export const setSearch = (url) => {
         payload: url
     }
 }
+
+export const GET_SEARCH = 'GET_SEARCH';
+
+export const getSearch = (url) => dispatch => {
+    dispatch({ type: FETCHING_START });
+    axios.get(url)
+        .then(res => dispatch({ type: GET_SEARCH, payload: res.data.cards }))
+        .catch(err => dispatch({ type: FETCHING_FAIL, payload: err }))
+}
