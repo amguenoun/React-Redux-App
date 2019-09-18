@@ -1,0 +1,19 @@
+{
+    "version": 2,
+    "name": "poke-tcg",
+    "builds": [
+        {
+            "src": "poke-tcg/package.json",
+            "use": "@now/static-build",
+            "config": {
+                "distDir": "build"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "poke-tcg/$1"
+        }
+    ]
+}
