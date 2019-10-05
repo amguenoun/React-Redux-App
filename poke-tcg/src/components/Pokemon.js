@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -6,6 +6,12 @@ import { saveCard, deleteCard } from '../store/actions/index';
 
 const Pokemon = (props) => {
     const [saved, setSaved] = useState(false);
+
+    const { savedCards } = props;
+
+    useEffect(() => {
+        localStorage.setItem('savedCards', JSON.stringify(savedCards));
+    }, [savedCards])
 
     const handleSave = () => {
         setSaved(true);
@@ -25,4 +31,10 @@ const Pokemon = (props) => {
     )
 }
 
-export default connect(null, { saveCard, deleteCard })(Pokemon);
+const mapStateToProps = state => {
+    return {
+        savedCards: state.savedCards,
+    }
+}
+
+export default connect(mapStateToProps, { saveCard, deleteCard })(Pokemon);
