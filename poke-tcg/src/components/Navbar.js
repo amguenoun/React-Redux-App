@@ -12,6 +12,7 @@ const Navbar = () => {
                 <Link to='/'>Home</Link>
                 <Link to='/pokemon'>Pokemon</Link>
                 <Link to='/search'>Search</Link>
+                <Link to='/savedcards'>My Cards</Link>
             </div>
         </div>
     )

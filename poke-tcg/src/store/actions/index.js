@@ -46,3 +46,21 @@ export const getSearch = (url) => dispatch => {
         .then(res => dispatch({ type: GET_SEARCH, payload: res.data.cards }))
         .catch(err => dispatch({ type: FETCHING_FAIL, payload: err }))
 }
+
+export const SAVE_CARD = 'SAVE_CARD';
+
+export const saveCard = (card) => {
+    return {
+        type: SAVE_CARD,
+        payload: card,
+    }
+}
+
+export const DELETE_CARD = 'DELETE_CARD';
+
+export const deleteCard = (id) => {
+    return {
+        type: DELETE_CARD,
+        payload: id,
+    }
+}
