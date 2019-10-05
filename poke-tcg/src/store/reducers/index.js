@@ -6,6 +6,8 @@ import {
     FETCH_INDIVIDUAL_POKEMON,
     SET_SEARCH,
     GET_SEARCH,
+    SAVE_CARD,
+    DELETE_CARD,
 } from '../actions'
 
 const initialState = {
@@ -16,6 +18,7 @@ const initialState = {
     searchUrl: null,
     individualCard: {},
     searchResults: [],
+    savedCards: [],
 }
 
 export const reducer = (state = initialState, action) => {
@@ -58,7 +61,17 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 searchUrl: action.payload
-            }
+            };
+        case SAVE_CARD:
+            return {
+                ...state,
+                savedCards: [...state.savedCards, action.payload],
+            };
+        case DELETE_CARD:
+            return {
+                ...state,
+                savedCards: state.savedCards.filter(card => card.id !== action.payload),
+            };
         default:
             return state;
     }
