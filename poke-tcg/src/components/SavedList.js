@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Pokemon from './Pokemon';
 
 const SavedList = ({ savedCards }) => {
+
     return (
         <div class="saved">
             <div className="saved-title">

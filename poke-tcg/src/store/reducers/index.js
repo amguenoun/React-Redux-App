@@ -18,7 +18,7 @@ const initialState = {
     searchUrl: null,
     individualCard: {},
     searchResults: [],
-    savedCards: [],
+    savedCards: localStorage.getItem('savedCards') ? JSON.parse(localStorage.getItem('savedCards')) : [],
 }
 
 export const reducer = (state = initialState, action) => {
