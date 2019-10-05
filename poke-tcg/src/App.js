@@ -11,7 +11,7 @@ import SavedList from './components/SavedList';
 import 'semantic-ui-css/semantic.min.css'
 import './App.css';
 
-function App(props) {
+function App() {
   return (
     <div className="App">
       <Navbar />
